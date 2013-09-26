@@ -1,0 +1,15 @@
+body{
+	padding:10px;
+}
+a:focus,a:active{outline:0;}
+a img{border:none;}
+#preview{ 
+	background-image: url(../img/Google-YouTube-128.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 325px;
+    width: 430px;
+}
+#insert-btn{
+	margin-left: 5px;
+}
