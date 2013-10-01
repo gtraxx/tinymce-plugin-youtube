@@ -19,8 +19,8 @@
  #
  # -- END LICENSE BLOCK -----------------------------------
  */
- 
-var youTube = (function($, undefined){
+// Namespace Youtube
+var youTube = (function($, window, document, undefined){
     /*
     * Return youtubeid
     * @param url
@@ -29,10 +29,12 @@ var youTube = (function($, undefined){
         var match = url.match((/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/));
         return match && match[2].length === 11 ? match[2] : false;
     }
-    /*
-    * Change protocol URL for ssl
-    * @param url
-    */
+
+    /**
+     * Change protocol URL for ssl
+     * @param url
+     * @returns {*}
+     */
     function protocol(url){
         // Test si url valide
         if(url.match(/((http|https):\/\/[^< ]+)/g)){
@@ -47,11 +49,13 @@ var youTube = (function($, undefined){
             console.log(url+' is not URL');
         }
     }
+
     /**
-    * Return YouTube convertUrl URL
-    * @param url
-    * @param mode
-    */
+     * Return YouTube convertUrl URL
+     * @param url
+     * @param mode
+     * @returns {*}
+     */
     function convertUrl(url,mode){
         var tabURL = new Array('https://www.youtube.com/v/','http://www.youtube.com/embed/');
         var newUrl;
@@ -80,13 +84,15 @@ var youTube = (function($, undefined){
             return yurl;
         }
     }
-    /*
-    * Format HTML
-    * @param mode
-    * @param size
-    * @param data
-    */
-    function formatHtml(mode,size,data){
+
+    /**
+     * Format HTML
+     * @param mode
+     * @param size
+     * @param data
+     * @returns {string|string}
+     */
+    function dataToHtml(mode,size,data){
         if(data != false){
             var Width = 'width="'+ size[0] + '"';
             var height = 'height="'+ size[1] + '"';
@@ -106,9 +112,11 @@ var youTube = (function($, undefined){
             return objectCode;
         }
     }
-    /*
-    * Insert content when the window form is submitted
-    */
+
+    /**
+     * Insert content when the window form is submitted
+     * @returns {string}
+     */
     function insert(){
         var options = '',
         html5State = $("#video").is(":checked"),
@@ -167,28 +175,35 @@ var youTube = (function($, undefined){
         if(newYouTubeUrl !== undefined || newYouTubeUrl !== false){
             // Insert the contents from the input into the document
             if(html5State != false){
-                return formatHtml('iframe',[width,height],newYouTubeUrl);
+                return dataToHtml('iframe',[width,height],newYouTubeUrl);
             }else{
-                return formatHtml('embed',[width,height],newYouTubeUrl+options);
+                return dataToHtml('embed',[width,height],newYouTubeUrl+options);
             }
         }
     }
-    /*
-    * Update Timer with keypress
-    */
+
+    /**
+     * Update Timer with keypress
+     * @param ts
+     * @param func
+     */
     function updateTimer(ts,func){
         if (this.timer) clearTimeout(this.timer);
         this.timer = setTimeout(func, ts ? ts : 1000);
     }
+
+    /**
+     * public
+     */
     return {
         preview:function(){
             //console.log(convertUrl($('#youtubeID').val()));
             $('#preview').html(
-                formatHtml('embed',[420,315],convertUrl($('#youtubeID').val(),'embed'))
+                dataToHtml('embed',[420,315],convertUrl($('#youtubeID').val(),'embed'))
             );
         },
         run:function(){
-            if(youtubeHtml()){
+            if(insert()){
                 //editor.insertContent(objectCode);
                 parent.tinymce.activeEditor.insertContent(insert());
                 parent.tinymce.activeEditor.windowManager.close();
@@ -206,22 +221,29 @@ var youTube = (function($, undefined){
             }
         }
     }
-})(jQuery);
-
+})(jQuery, window, document);
+/**
+ * Execute namespace youtube
+ */
 $(function(){
-    // Init jquery template
-    $("#template-container").loadTemplate($("#template"),
-    {
-        youtubeurl: parent.tinymce.util.I18n.translate('Youtube URL'),
-        youtubeID: parent.tinymce.util.I18n.translate('Youtube ID'),
-        youtubeWidth: parent.tinymce.util.I18n.translate('width'),
-        youtubeHeight: parent.tinymce.util.I18n.translate('height'),
-        youtubeAutoplay: parent.tinymce.util.I18n.translate('autoplay'),
-        youtubeHD: parent.tinymce.util.I18n.translate('HD video'),
-        youtubeREL: parent.tinymce.util.I18n.translate('Related video')
-    });
-    youTube.runPreview();
-    $('#insert-btn').on('click',function(){
-        youTube.run();
+    // Init templatewith mustach
+    var data = {
+        "youtubeurl": parent.tinymce.util.I18n.translate('Youtube URL'),
+        "youtubeID": parent.tinymce.util.I18n.translate('Youtube ID'),
+        "youtubeWidth": parent.tinymce.util.I18n.translate('width'),
+        "youtubeHeight": parent.tinymce.util.I18n.translate('height'),
+        "youtubeAutoplay": parent.tinymce.util.I18n.translate('autoplay'),
+        "youtubeHD": parent.tinymce.util.I18n.translate('HD video'),
+        "youtubeREL": parent.tinymce.util.I18n.translate('Related video')
+    };
+    //Use jQuery's get method to retrieve the contents of our template file, then render the template.
+    $.get('view/forms.html' , function (template) {
+        filled = Mustache.render( template, data );
+        $('#template-container').append(filled);
+        // preview
+        youTube.runPreview();
+        $('#insert-btn').on('click',function(){
+            youTube.run();
+        });
     });
 });
