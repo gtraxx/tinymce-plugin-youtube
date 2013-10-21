@@ -26,6 +26,7 @@ Official link in french :
  * Russian
  * Spanish
  * German
+ * Italian
  
  You can send me translations in other languages
  
