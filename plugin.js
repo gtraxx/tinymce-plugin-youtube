@@ -30,7 +30,7 @@ tinymce.PluginManager.add('youtube', function(editor, url) {
             title: "YouTube Title",
             file: tinyMCE.baseURL + '/plugins/youtube/youtube.html',
             width: 800,
-            height: 600,
+            height: 530,
             inline: 1,
             resizable: true,
             maximizable: true

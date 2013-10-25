@@ -13,3 +13,13 @@ a img{border:none;}
 #insert-btn{
 	margin-left: 5px;
 }
+.alert{
+    margin-bottom: 5px;
+    padding: 5px;
+}
+.form-group{
+    margin-bottom: 0;
+}
+.alert-info{
+    font-size: 12px;
+}
