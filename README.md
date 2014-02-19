@@ -27,6 +27,7 @@ Official link in french :
  * Spanish
  * German
  * Italian
+ * Brazilian
  
  You can send me translations in other languages
  
