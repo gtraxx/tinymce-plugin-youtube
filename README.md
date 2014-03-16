@@ -28,6 +28,7 @@ Official link in french :
  * German
  * Italian
  * Brazilian
+ * Hungarian
  
  You can send me translations in other languages
  
