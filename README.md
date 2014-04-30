@@ -29,6 +29,7 @@ Official link in french :
  * Italian
  * Brazilian
  * Hungarian
+ * Polish
  
  You can send me translations in other languages
  
