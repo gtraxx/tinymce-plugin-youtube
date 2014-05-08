@@ -16,9 +16,8 @@ Official link in french :
 ![tinyMCE plugin YouTube](http://blog.aurelien-gerits.be/wp-content/uploads/2013/09/youtube-tinymce-2.0.png "tinyMCE plugin YouTube")
 
 ###Installation
- * Download skin
- * Unzip archive
- * Move folder bootstrap in tinyMCE (tiny_mce/plugins/)
+ * Download the dist/youtube.zip archive
+ * Unzip archive in tinyMCE plugin directory (tiny_mce/plugins/)
 
 ###Language
  * English
