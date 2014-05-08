@@ -20,230 +20,149 @@
  # -- END LICENSE BLOCK -----------------------------------
  */
 // Namespace Youtube
-var youTube = (function($, window, document, undefined){
+(function ($) {
+    var timer;
+
     /*
-    * Return youtubeid
-    * @param url
-    */
+     * Return youtube id
+     * @param url {string}
+     * @return {string|boolean}
+     */
     function youtubeId(url) {
-        var match = url.match((/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/));
+        var match = url.match((/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/));
         return match && match[2].length === 11 ? match[2] : false;
     }
 
     /**
-     * Change protocol URL for ssl
-     * @param url
-     * @returns {*}
-     */
-    function protocol(url){
-        // Test si url valide
-        if(url.match(/((http|https):\/\/[^< ]+)/g)){
-            if(url.match(new RegExp("http://","g"))){
-                // Replace http:// for https://
-                ssl_url = url.replace(/^http:\/\//i, 'https://');
-            }else{
-                ssl_url = url;
-            }
-            return ssl_url;
-        }else{
-            console.log(url+' is not URL');
-        }
-    }
-
-    /**
      * Return YouTube convertUrl URL
-     * @param url
-     * @param mode
-     * @returns {*}
+     * @param url {string}
+     * @param iframe {bool} embed or iframe
+     * @returns {string}
      */
-    function convertUrl(url,mode){
-        var tabURL = new Array('https://www.youtube.com/v/','http://www.youtube.com/embed/');
-        var newUrl;
-        switch(mode){
-            case 'embed':
-                newUrl = tabURL[0];
-            break;
-            case 'iframe':
-                newUrl = tabURL[1];
-            break;
+    function convertUrl(url, iframe) {
+        var id = youtubeId(url);
+        if (url && id) {
+            url = "https://www.youtube.com/" + (iframe ? "embed/" : "v/") + youtubeId(url);
         }
-        if(url != ''){
-            
-            //Replace http://youtu.be/xxxxxxxx for http://www.youtube.com/v/xxxxxxxxxx
-            if(protocol(url).match(new RegExp("https://www.youtube.com/","g"))){
-                //Replace url
-                yurl = protocol(url).replace(protocol(url),newUrl+youtubeId(protocol(url)));
-                
-            }else if(url.match(new RegExp("http://youtu.be/","g"))){
-                //Replace url
-                yurl = url.replace("http://youtu.be/",newUrl);
-                
-            }else{
-                yurl = false;
-            }
-            return yurl;
-        }
+        return url;
     }
 
     /**
      * Format HTML
-     * @param mode
-     * @param size
-     * @param data
-     * @returns {string|string}
+     * @param iframe {boolean}
+     * @param width {number}
+     * @param height {number}
+     * @param data {string}
+     * @returns {string}
      */
-    function dataToHtml(mode,size,data){
-        if(data != false){
-            var Width = 'width="'+ size[0] + '"';
-            var height = 'height="'+ size[1] + '"';
-            switch(mode){
-                case 'embed':
-                    var objectCode = '<div class="youtube">';
-                        objectCode +='<object type="application/x-shockwave-flash" '+Width+height+' data="'+data+'&modestbranding=1'+'">';
-                        objectCode += '<param name="movie" value="'+data+'&modestbranding=1'+'" />';
-                        objectCode += '<param name="wmode" value="transparent" />';
-                        objectCode += '</object>';
-                        objectCode += '</div>';
-                    break;
-                case 'iframe':
-                    var objectCode ='<iframe src="'+data+'" '+Width+height+' frameborder="0" allowfullscreen>⁪&nbsp;</iframe>';
-                    break;
+    function dataToHtml(iframe, width, height, data) {
+        var dim, code;
+        if (data) {
+            dim = 'width="' + width + '" height="' + height + '"';
+            if (iframe) {
+                code = '<iframe src="' + data + '" ' + dim + ' frameborder="0" allowfullscreen>&nbsp;</iframe>';
+            } else {
+                code =  '<div class="youtube">' +
+                            '<object type="application/x-shockwave-flash" ' + dim + ' data="' + data + '&modestbranding=1">' +
+                                '<param name="movie" value="' + data + '&modestbranding=1" />' +
+                                '<param name="wmode" value="transparent" />' +
+                            '</object>' +
+                        '</div>';
             }
-            return objectCode;
         }
+        return code;
     }
 
     /**
      * Insert content when the window form is submitted
      * @returns {string}
      */
-    function insert(){
-        var options = '',
-        html5State = $("#video").is(":checked"),
-        youtubeAutoplay = $("#youtubeAutoplay").is(":checked"),
-        youtubeREL = $("#youtubeREL").is(":checked"),
-        youtubeHD = $("#youtubeHD").is(":checked");
+    function insert() {
+        var result,
+            options = "",
+            html5State = $("#video").is(":checked"),
+            youtubeAutoplay = $("#youtubeAutoplay").is(":checked"),
+            youtubeREL = $("#youtubeREL").is(":checked"),
+            youtubeHD = $("#youtubeHD").is(":checked"),
+            width = $("#youtubeWidth").val(),
+            height = $("#youtubeHeight").val(),
+            newYouTubeUrl = convertUrl($('#youtubeID').val(), html5State);
 
-        switch (youtubeAutoplay){
-            case false:
-                options += '';
-            break;
-            case true:
-                options += '&amp;autoplay=1';
-            break;
-            default:
-            options += '';
-                break;
+        if (youtubeAutoplay) {
+            options += "&amp;autoplay=1";
         }
         //SELECT Include related videos
         //var relvideo = document.getElementById("youtubeREL");
-        switch (youtubeREL)       {
-            case false: 
-                options += '';
-                break;
-            case true:
-                options += '&amp;rel=0';
-                break;
-            default:
-            options += '';
-                break;
+        if (youtubeREL) {
+            options += "&amp;rel=0";
         }
+
         //SELECT Watch in HD
         //var HD = document.getElementById("youtubeHD");
-        switch (youtubeHD){
-            case false:
-                options += '';
-            break;
-            case true:
-                options += '&amp;hd=1';
-            break;
-            default:
-            options += '';
-                break;
+        if (youtubeHD) {
+            options += "&amp;hd=1";
         }
-        //Config Size Video
-        var width = $('#youtubeWidth').val();
-        var height = $('#youtubeHeight').val()
-        //console.log(html5State);
-        /*var test = win.find('button')[0].value();
-        console.log(test);*/
-        if(html5State != false){
-            var newYouTubeUrl = convertUrl($('#youtubeID').val(),'iframe');
-        }else{
-            var newYouTubeUrl = convertUrl($('#youtubeID').val(),'embed');
-        }
-        if(newYouTubeUrl !== undefined || newYouTubeUrl !== false){
+
+        if (newYouTubeUrl) {
             // Insert the contents from the input into the document
-            if(html5State != false){
-                return dataToHtml('iframe',[width,height],newYouTubeUrl);
-            }else{
-                return dataToHtml('embed',[width,height],newYouTubeUrl+options);
-            }
+            result = dataToHtml(html5State, width, height, newYouTubeUrl + (html5State ? "" : options));
         }
+        return result;
+    }
+
+    function preview() {
+        $("#preview").html(
+            dataToHtml(true, 420, 315, convertUrl($('#youtubeID').val()))
+        );
     }
 
     /**
      * Update Timer with keypress
-     * @param ts
-     * @param func
+     * @param ts {number} (optional)
      */
-    function updateTimer(ts,func){
-        if (this.timer) clearTimeout(this.timer);
-        this.timer = setTimeout(func, ts ? ts : 1000);
+    function updateTimer(ts) {
+        clearTimeout(timer);
+        timer = setTimeout(preview, ts || 1000);
+    }
+
+    function run() {
+        var data = insert();
+        if (data) {
+            parent.tinymce.activeEditor.insertContent(data);
+        }
+        parent.tinymce.activeEditor.windowManager.close();
+    }
+
+    function runPreview() {
+        if ($("#preview").length) {
+            $('#youtubeID').keypress(function () {
+                updateTimer();
+            }).change(function () {
+                updateTimer(100);
+            });
+        }
     }
 
     /**
-     * public
+     * Execute namespace youtube
      */
-    return {
-        preview:function(){
-            //console.log(convertUrl($('#youtubeID').val()));
-            $('#preview').html(
-                dataToHtml('embed',[420,315],convertUrl($('#youtubeID').val(),'embed'))
-            );
-        },
-        run:function(){
-            if(insert()){
-                //editor.insertContent(objectCode);
-                parent.tinymce.activeEditor.insertContent(insert());
-                parent.tinymce.activeEditor.windowManager.close();
-            }else{
-                parent.tinymce.activeEditor.windowManager.close();
-            }
-        },
-        runPreview:function(){
-            if($("#preview").length !=0){
-                $('#youtubeID').keypress(function(){
-                    updateTimer('','youTube.preview();');
-                }).change(function(){
-                    updateTimer(100,'youTube.preview();');
-                });
-            }
-        }
-    }
-})(jQuery, window, document);
-/**
- * Execute namespace youtube
- */
-$(function(){
-    // Init templatewith mustach
-    var data = {
-        "youtubeurl": parent.tinymce.util.I18n.translate('Youtube URL'),
-        "youtubeID": parent.tinymce.util.I18n.translate('Youtube ID'),
-        "youtubeWidth": parent.tinymce.util.I18n.translate('width'),
-        "youtubeHeight": parent.tinymce.util.I18n.translate('height'),
-        "youtubeAutoplay": parent.tinymce.util.I18n.translate('autoplay'),
-        "youtubeHD": parent.tinymce.util.I18n.translate('HD video'),
-        "youtubeREL": parent.tinymce.util.I18n.translate('Related video')
-    };
-    //Use jQuery's get method to retrieve the contents of our template file, then render the template.
-    $.get('view/forms.html' , function (template) {
-        filled = Mustache.render( template, data );
-        $('#template-container').append(filled);
-        // preview
-        youTube.runPreview();
-        $('#insert-btn').on('click',function(){
-            youTube.run();
+    $(function () {
+        // Init templatewith mustach
+        var data = {
+            youtubeurl: parent.tinymce.util.I18n.translate("Youtube URL"),
+            youtubeID: parent.tinymce.util.I18n.translate("Youtube ID"),
+            youtubeWidth: parent.tinymce.util.I18n.translate("width"),
+            youtubeHeight: parent.tinymce.util.I18n.translate("height"),
+            youtubeAutoplay: parent.tinymce.util.I18n.translate("autoplay"),
+            youtubeHD: parent.tinymce.util.I18n.translate("HD video"),
+            youtubeREL: parent.tinymce.util.I18n.translate("Related video")
+        };
+
+        //Use jQuery's get method to retrieve the contents of our template file, then render the template.
+        $.get("view/forms.html", function (template) {
+            $("#template-container").append(Mustache.render(template, data));
+            runPreview();
+            $("#insert-btn").on("click", run);
         });
     });
-});
+}(jQuery));

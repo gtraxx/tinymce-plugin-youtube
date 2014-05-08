@@ -19,36 +19,33 @@
  #
  # -- END LICENSE BLOCK -----------------------------------
  */
-tinymce.PluginManager.requireLangPack('youtube');
-tinymce.PluginManager.add('youtube', function(editor, url) {
-    function showDialog() {
-        var win, 
-        data = {}, 
-        dom = editor.dom;
-        // Open URL based window
-        win = editor.windowManager.open({
-            title: "YouTube Title",
-            file: tinyMCE.baseURL + '/plugins/youtube/youtube.html',
-            width: 800,
-            height: 530,
-            inline: 1,
-            resizable: true,
-            maximizable: true
-        });
-    }
-
-    // Add a button that opens a window
-    editor.addButton('youtube', {
-        //text: 'youtube',
-        icon: true,
-        image: url+'/img/youtube.gif',
-        tooltip: 'Youtube insert',
-        onclick: showDialog,
-        onPostRender: function() {
-            var ctrl = this;
-            editor.on('NodeChange', function(e) {
-                ctrl.active(e.element.nodeName == 'IMG');
+(function (tiny) {
+    tiny.PluginManager.requireLangPack("youtube");
+    tiny.PluginManager.add("youtube", function (editor, url) {
+        function showDialog() {
+            editor.windowManager.open({
+                title: "YouTube Title",
+                file: tiny.baseURL + "/plugins/youtube/youtube.html",
+                width: 800,
+                height: 530,
+                inline: 1,
+                resizable: true,
+                maximizable: true
             });
         }
+
+        // Add a button that opens a window
+        editor.addButton("youtube", {
+            icon: true,
+            image: url + "/img/youtube.gif",
+            tooltip: "Youtube insert",
+            onclick: showDialog,
+            onPostRender: function () {
+                var self = this;
+                editor.on("NodeChange", function (e) {
+                    self.active(e.element.nodeName === "IMG");
+                });
+            }
+        });
     });
-});
+}(tinymce));
