@@ -1,4 +1,4 @@
-/*
+/*!
  # -- BEGIN LICENSE BLOCK ----------------------------------
  #
  # This file is part of tinyMCE.

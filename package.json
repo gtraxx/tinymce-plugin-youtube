@@ -1,0 +1,37 @@
+{
+  "name": "tinymce-plugin-youtube",
+  "version": "1.0.0",
+  "description": "Plugin youtube for TinyMCE 4",
+  "main": "youtube.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gtraxx/tinymce-plugin-youtube.git"
+  },
+  "keywords": [
+    "tinymce",
+    "jquery",
+    "youtube"
+  ],
+  "author": {
+    "name": "Gerits Aurelien",
+    "mail": "contact@aurelien-gerits.be"
+  },
+  "license": "GPL3",
+  "bugs": {
+    "url": "https://github.com/gtraxx/tinymce-plugin-youtube/issues"
+  },
+  "homepage": "https://github.com/gtraxx/tinymce-plugin-youtube",
+  "devDependencies": {
+    "gulp": "^3.6.2",
+    "gulp-clean": "^0.2.4",
+    "gulp-uglify": "^0.2.1",
+    "gulp-zip": "^0.3.4",
+    "gulp-concat": "^2.2.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.3.0",
+    "gulp-minify-css": "^0.3.4"
+  }
+}
