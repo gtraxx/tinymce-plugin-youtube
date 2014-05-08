@@ -19,7 +19,6 @@
  #
  # -- END LICENSE BLOCK -----------------------------------
  */
-// Namespace Youtube
 (function ($) {
     var timer;
 
