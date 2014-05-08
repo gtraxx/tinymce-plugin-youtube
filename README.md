@@ -19,7 +19,22 @@ Official link in french :
  * Download the dist/youtube.zip archive
  * Unzip archive in tinyMCE plugin directory (tiny_mce/plugins/)
 
-###Language
+###Configuration
+ ```html
+<script type="text/javascript">
+tinymce.init({
+	selector: "textarea",
+	plugins: [
+			"advlist autolink lists link image charmap print preview anchor",
+			"searchreplace visualblocks code fullscreen",
+			"insertdatetime media table contextmenu paste youtube"
+			],
+	toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image| youtube"
+	});
+</script>
+```
+
+###Languages
  * English
  * French
  * Russian
