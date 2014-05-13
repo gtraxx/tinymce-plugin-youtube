@@ -1,6 +1,6 @@
 {
   "name": "tinymce-plugin-youtube",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plugin youtube for TinyMCE 4",
   "main": "youtube.html",
   "scripts": {

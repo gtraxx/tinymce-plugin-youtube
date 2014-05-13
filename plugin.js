@@ -25,7 +25,7 @@
         function showDialog() {
             editor.windowManager.open({
                 title: "YouTube Title",
-                file: tiny.baseURL + "/plugins/youtube/youtube.html",
+                file: url + "/youtube.html",
                 width: 800,
                 height: 530,
                 inline: 1,
