@@ -154,7 +154,9 @@
             youtubeHeight: parent.tinymce.util.I18n.translate("height"),
             youtubeAutoplay: parent.tinymce.util.I18n.translate("autoplay"),
             youtubeHD: parent.tinymce.util.I18n.translate("HD video"),
-            youtubeREL: parent.tinymce.util.I18n.translate("Related video")
+            youtubeREL: parent.tinymce.util.I18n.translate("Related video"),
+            HTML5: parent.tinymce.util.I18n.translate("html5"),
+            Insert: parent.tinymce.util.I18n.translate("Insert")
         };
 
         //Use jQuery's get method to retrieve the contents of our template file, then render the template.
