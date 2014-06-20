@@ -6,5 +6,7 @@ tinymce.addI18n('fr',{
 	'height'		: 'Hauteur',
 	'autoplay'		: 'Autoplay',
 	'Related video' : 'Vidéos similaires',
-	'HD video'      : 'Visionner en HD'
+	'HD video'      : 'Visionner en HD',
+    'HTML5'         : 'HTML5',
+    'Insert'        : 'Insérer'
 });
