@@ -5,6 +5,6 @@ tinymce.addI18n('nl',{
 	'width'		: 'Breedte',
 	'height'	: 'Hoogte',
 	'autoplay'	: 'Automatisch afspelen',
-	'Related video' : 'Toon gerelateerde video's',
+	'Related video' : 'Toon gerelateerde videos',
 	'HD video'      : 'Toon in HD-resolutie'
 });
