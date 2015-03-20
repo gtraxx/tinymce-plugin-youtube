@@ -24,7 +24,7 @@
     tiny.PluginManager.add("youtube", function (editor, url) {
         function showDialog() {
             editor.windowManager.open({
-                title: "YouTube Title",
+                title: tinymce.util.I18n.translate("YouTube Title"),
                 file: url + "/youtube.html",
                 width: 800,
                 height: 530,
@@ -38,7 +38,7 @@
         editor.addButton("youtube", {
             icon: true,
             image: url + "/img/youtube.gif",
-            tooltip: "Youtube insert",
+            tooltip:  tinymce.util.I18n.translate("YouTube Tooltip"),
             onclick: showDialog,
             onPostRender: function () {
                 var self = this;
