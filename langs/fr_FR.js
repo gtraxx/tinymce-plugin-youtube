@@ -1,4 +1,4 @@
-tinymce.addI18n('fr',{
+tinymce.addI18n('fr_FR',{
     'YouTube Tooltip'   : "YouTube",
 	'YouTube Title'     : "Insertion d'une vidéo youtube",
 	'Youtube URL'	    : 'URL YouTube',
