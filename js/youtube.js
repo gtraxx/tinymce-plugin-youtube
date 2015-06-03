@@ -41,7 +41,8 @@
     function convertUrl(url, iframe) {
         var id = youtubeId(url);
         if (url && id) {
-            url = "https://www.youtube.com/" + (iframe ? "embed/" : "v/") + youtubeId(url);
+            //url = "https://www.youtube.com/" + (iframe ? "embed/" : "v/") + youtubeId(url);
+            url = "https://www.youtube.com/" + "embed/" + youtubeId(url);
         }
         return url;
     }
@@ -59,7 +60,7 @@
         if (data) {
             dim = 'width="' + width + '" height="' + height + '"';
             if (iframe) {
-                code = '<iframe src="' + data + '" ' + dim + ' frameborder="0" allowfullscreen>&nbsp;</iframe>';
+                code = '<iframe src="' + data + '" ' + dim + ' frameborder="0" allowfullscreen class="embed-responsive-item">&nbsp;</iframe>';
             } else {
                 code =  '<div class="youtube">' +
                             '<object type="application/x-shockwave-flash" ' + dim + ' data="' + data + '&modestbranding=1">' +
