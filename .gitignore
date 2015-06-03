@@ -1,2 +1,5 @@
+.svn-base
+.svn
 .idea
 .DS_STORE
+/node_modules/*
