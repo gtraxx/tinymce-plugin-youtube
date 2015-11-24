@@ -54,7 +54,7 @@ tinymce.init({
 <pre>
 This file is part of tinyMCE.
 YouTube for tinyMCE
-Copyright (C) 2011 - 2013  Gerits Aurelien aurelien[at]magix-dev[dot]be - contact[at]aurelien-gerits[dot]be
+Copyright (C) 2011 - 2015  Gerits Aurelien aurelien[at]magix-dev[dot]be - contact[at]aurelien-gerits[dot]be
 
 Redistributions of files must retain the above copyright notice.
 This program is free software: you can redistribute it and/or modify

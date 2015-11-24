@@ -43,7 +43,7 @@
         var id = youtubeId(url);
         if (url && id) {
             //url = "https://www.youtube.com/" + (iframe ? "embed/" : "v/") + youtubeId(url);
-            url = "https://www.youtube.com/" + "embed/" + youtubeId(url);
+            url = "https://www.youtube.com/" + "embed/" + youtubeId(url) + '/';
         }
         return url;
     }
@@ -110,7 +110,8 @@
 
         if (newYouTubeUrl) {
             // Insert the contents from the input into the document
-            result = dataToHtml(html5State, width, height, newYouTubeUrl + (html5State ? "" : options));
+            //result = dataToHtml(html5State, width, height, newYouTubeUrl + (html5State ? "" : options));
+            result = dataToHtml(html5State, width, height, newYouTubeUrl + options);
         }
         return result;
     }
