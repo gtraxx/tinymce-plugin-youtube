@@ -18,6 +18,7 @@
  # along with this program.  If not, see <http://www.gnu.org/licenses/>.
  #
  # -- END LICENSE BLOCK -----------------------------------
+ * https://developers.google.com/youtube/player_parameters
  */
 (function ($) {
     var timer;
@@ -38,7 +39,7 @@
      * @param iframe {bool} embed or iframe
      * @returns {string}
      */
-    function convertUrl(url, iframe) {
+    function convertUrl(url) {
         var id = youtubeId(url);
         if (url && id) {
             //url = "https://www.youtube.com/" + (iframe ? "embed/" : "v/") + youtubeId(url);
@@ -86,7 +87,7 @@
             youtubeHD = $("#youtubeHD").is(":checked"),
             width = $("#youtubeWidth").val(),
             height = $("#youtubeHeight").val(),
-            newYouTubeUrl = convertUrl($('#youtubeID').val(), html5State);
+            newYouTubeUrl = convertUrl($('#youtubeID').val());
 
         if (youtubeAutoplay) {
             options += "&amp;autoplay=1";
@@ -94,6 +95,8 @@
         //SELECT Include related videos
         //var relvideo = document.getElementById("youtubeREL");
         if (youtubeREL) {
+            options += "&amp;rel=1";
+        }else{
             options += "&amp;rel=0";
         }
 
@@ -101,6 +104,8 @@
         //var HD = document.getElementById("youtubeHD");
         if (youtubeHD) {
             options += "&amp;hd=1";
+        }else{
+            options += "&amp;hd=0";
         }
 
         if (newYouTubeUrl) {
