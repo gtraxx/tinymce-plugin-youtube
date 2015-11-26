@@ -43,7 +43,7 @@
         var id = youtubeId(url);
         if (url && id) {
             //url = "https://www.youtube.com/" + (iframe ? "embed/" : "v/") + youtubeId(url);
-            url = "https://www.youtube.com/" + "embed/" + youtubeId(url) + '/';
+            url = "https://www.youtube.com/" + "embed/" + youtubeId(url);
         }
         return url;
     }
@@ -89,25 +89,25 @@
             height = $("#youtubeHeight").val(),
             newYouTubeUrl = convertUrl($('#youtubeID').val());
 
-        if (youtubeAutoplay) {
-            options += "&amp;autoplay=1";
-        }
         //SELECT Include related videos
         //var relvideo = document.getElementById("youtubeREL");
         if (youtubeREL) {
-            options += "&amp;rel=1";
+            options += "?rel=1";
         }else{
-            options += "&amp;rel=0";
+            options += "?rel=0";
         }
 
         //SELECT Watch in HD
         //var HD = document.getElementById("youtubeHD");
         if (youtubeHD) {
-            options += "&amp;hd=1";
+            options += "&hd=1";
         }else{
-            options += "&amp;hd=0";
+            options += "&hd=0";
         }
-
+        // Youtube Autoplay
+        if (youtubeAutoplay) {
+            options += "&autoplay=1";
+        }
         if (newYouTubeUrl) {
             // Insert the contents from the input into the document
             //result = dataToHtml(html5State, width, height, newYouTubeUrl + (html5State ? "" : options));
