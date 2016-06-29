@@ -13,7 +13,7 @@ Official link in french :
 
 ###Screenshot
 
-![tinyMCE plugin YouTube](http://blog.aurelien-gerits.be/wp-content/uploads/2013/09/youtube-tinymce-2.0.png "tinyMCE plugin YouTube")
+![youtube-tinymce](https://cloud.githubusercontent.com/assets/356674/16443204/b335c9f0-3dd7-11e6-881a-bb106e554ca9.png)
 
 ###Installation
  * Download the dist/youtube.zip archive
