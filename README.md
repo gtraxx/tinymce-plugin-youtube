@@ -29,7 +29,8 @@ tinymce.init({
 			"searchreplace visualblocks code fullscreen",
 			"insertdatetime media table contextmenu paste youtube"
 			],
-	toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image| youtube"
+	toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image| youtube",
+	extended_valid_elements: "+iframe[src|width|height|name|align|class]",
 	});
 </script>
 ```
