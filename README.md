@@ -45,6 +45,7 @@ tinymce.init({
  * Brazilian
  * Hungarian
  * Polish
+ * Dutch
  
  You can send me translations in other languages
  
