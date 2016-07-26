@@ -13,7 +13,7 @@ Official link in french :
 
 ###Screenshot
 
-![youtube-tinymce](https://cloud.githubusercontent.com/assets/356674/16443204/b335c9f0-3dd7-11e6-881a-bb106e554ca9.png)
+![youtube-tinymce-1 2 0](https://cloud.githubusercontent.com/assets/356674/17137863/b977bf00-533d-11e6-9070-426c5131f75a.png)
 
 ###Installation
  * Download the dist/youtube.zip archive
