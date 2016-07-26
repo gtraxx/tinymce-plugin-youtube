@@ -27,7 +27,7 @@
                 title: tinymce.util.I18n.translate("YouTube Title"),
                 file: url + "/youtube.html",
                 width: 800,
-                height: 530,
+                height: 550,
                 inline: 1,
                 resizable: true,
                 maximizable: true

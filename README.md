@@ -1,7 +1,7 @@
 Plugin youtube for TinyMCE 4
 ======================
 
-Insert YouTube video W3C valid with optionnals (HD, similar vidéos)
+Insert YouTube video (Google Format) with optionnals (HD, similar vidéos)
 
 
 Authors
@@ -46,6 +46,7 @@ tinymce.init({
  * Hungarian
  * Polish
  * Dutch
+ * Turkish
  
  You can send me translations in other languages
  

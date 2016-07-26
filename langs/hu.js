@@ -2,12 +2,12 @@
     'YouTube Tooltip'   : "YouTube",
     'YouTube Title'     : "Youtube videó beillesztése",
     'Youtube URL'       : 'Link megosztása',
-    'Youtube ID'        : 'Link formátuma a megosztáshoz: http://youtu.be/xxxxxxxx vagy http://www.youtube.com/watch?v=xxxxxxxx',
+    'Youtube ID'        : 'http://youtu.be/xxxxxxxx vagy http://www.youtube.com/watch?v=xxxxxxxx',
     'width'             : 'Szélesség',
     'height'            : 'Magasság',
     'autoplay'          : 'Automatikus lejátszás',
     'Related video'     : 'Kapcsolód videó',
     'HD video'          : 'HD lejátszás',
-    'html5'             : 'HTML5',
+    'cancel'            : 'Megszünteti',
     'Insert'            : 'Beillesztése'
 });

@@ -2,8 +2,8 @@
  # -- BEGIN LICENSE BLOCK ----------------------------------
  #
  # This file is part of tinyMCE.
- # YouTube for tinyMCE
- # Copyright (C) 2011 - 2013  Gerits Aurelien <aurelien[at]magix-dev[dot]be> - <contact[at]aurelien-gerits[dot]be>
+ # YouTube for tinyMCE 4.x.x
+ # Copyright (C) 2011 - 2016  Gerits Aurelien <aurelien[at]magix-dev[dot]be> - <contact[at]aurelien-gerits[dot]be>
  # This program is free software: you can redistribute it and/or modify
  # it under the terms of the GNU General Public License as published by
  # the Free Software Foundation, either version 3 of the License, or
@@ -56,22 +56,12 @@
      * @param data {string}
      * @returns {string}
      */
-    function dataToHtml(iframe, width, height, data) {
-        var dim, code;
+    function dataToHtml(width, height, data) {
+        var dim;
         if (data) {
             dim = 'width="' + width + '" height="' + height + '"';
-            if (iframe) {
-                code = '<iframe src="' + data + '" ' + dim + ' frameborder="0" allowfullscreen class="embed-responsive-item">&nbsp;</iframe>';
-            } else {
-                code =  '<div class="youtube">' +
-                            '<object type="application/x-shockwave-flash" ' + dim + ' data="' + data + '&modestbranding=1">' +
-                                '<param name="movie" value="' + data + '&modestbranding=1" />' +
-                                '<param name="wmode" value="transparent" />' +
-                            '</object>' +
-                        '</div>';
-            }
+            return '<iframe src="' + data + '" ' + dim + ' frameborder="0" allowfullscreen class="embed-responsive-item">&nbsp;</iframe>';
         }
-        return code;
     }
 
     /**
@@ -81,7 +71,6 @@
     function insert() {
         var result,
             options = "",
-            html5State = $("#video").is(":checked"),
             youtubeAutoplay = $("#youtubeAutoplay").is(":checked"),
             youtubeREL = $("#youtubeREL").is(":checked"),
             youtubeHD = $("#youtubeHD").is(":checked"),
@@ -90,7 +79,6 @@
             newYouTubeUrl = convertUrl($('#youtubeID').val());
 
         //SELECT Include related videos
-        //var relvideo = document.getElementById("youtubeREL");
         if (youtubeREL) {
             options += "?rel=1";
         }else{
@@ -98,7 +86,6 @@
         }
 
         //SELECT Watch in HD
-        //var HD = document.getElementById("youtubeHD");
         if (youtubeHD) {
             options += "&hd=1";
         }else{
@@ -111,14 +98,14 @@
         if (newYouTubeUrl) {
             // Insert the contents from the input into the document
             //result = dataToHtml(html5State, width, height, newYouTubeUrl + (html5State ? "" : options));
-            result = dataToHtml(html5State, width, height, newYouTubeUrl + options);
+            result = dataToHtml(width, height, newYouTubeUrl + options);
         }
         return result;
     }
 
     function preview() {
         $("#preview").html(
-            dataToHtml(true, 420, 315, convertUrl($('#youtubeID').val()))
+            dataToHtml(750, 315, convertUrl($('#youtubeID').val()))
         );
     }
 
@@ -131,6 +118,9 @@
         timer = setTimeout(preview, ts || 1000);
     }
 
+    /**
+     * Execute insert
+     */
     function run() {
         var data = insert();
         if (data) {
@@ -139,6 +129,9 @@
         parent.tinymce.activeEditor.windowManager.close();
     }
 
+    /**
+     * Execute preview
+     */
     function runPreview() {
         if ($("#preview").length) {
             $('#youtubeID').keypress(function () {
@@ -162,7 +155,7 @@
             youtubeAutoplay: parent.tinymce.util.I18n.translate("autoplay"),
             youtubeHD: parent.tinymce.util.I18n.translate("HD video"),
             youtubeREL: parent.tinymce.util.I18n.translate("Related video"),
-            HTML5: parent.tinymce.util.I18n.translate("html5"),
+            cancel: parent.tinymce.util.I18n.translate("cancel"),
             Insert: parent.tinymce.util.I18n.translate("Insert")
         };
 
@@ -171,6 +164,9 @@
             $("#template-container").append(Mustache.render(template, data));
             runPreview();
             $("#insert-btn").on("click", run);
+            $("#close-btn").on("click", function(){
+                parent.tinymce.activeEditor.windowManager.close();
+            });
         });
     });
 }(jQuery));
