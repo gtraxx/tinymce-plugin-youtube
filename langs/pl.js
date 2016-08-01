@@ -8,6 +8,6 @@ tinymce.addI18n('pl',{
 	'autoplay'		    : 'Automatyczne odtwarzanie',
 	'Related video'     : 'Pokazuj sugerowane filmy',
 	'HD video'          : 'Odtwarzaj w HD',
-    'cancel'            : 'Anulować',
+    'cancel'            : 'Anuluj',
     'Insert'            : 'Wstaw'
 });
