@@ -3,7 +3,7 @@
  #
  # This file is part of tinyMCE.
  # YouTube for tinyMCE 4.x.x
- # Copyright (C) 2011 - 2016  Gerits Aurelien <aurelien[at]magix-dev[dot]be> - <contact[at]aurelien-gerits[dot]be>
+ # Copyright (C) 2011 - 2017  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
  # This program is free software: you can redistribute it and/or modify
  # it under the terms of the GNU General Public License as published by
  # the Free Software Foundation, either version 3 of the License, or

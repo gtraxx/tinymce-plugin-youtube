@@ -3,6 +3,10 @@ Plugin youtube for TinyMCE 4
 
 Insert YouTube video (Google Format) with optionnals (HD, similar vidéos)
 
+###version 
+
+[![release](https://img.shields.io/github/release/gtraxx/tinymce-plugin-youtube.svg)](https://github.com/gtraxx/tinymce-plugin-youtube/releases/latest)
+
 
 Authors
 -------
@@ -13,7 +17,7 @@ Official link in french :
 
 ###Screenshot
 
-![youtube-tinymce-1 2 0](https://cloud.githubusercontent.com/assets/356674/17137863/b977bf00-533d-11e6-9070-426c5131f75a.png)
+![youtube-tinymce-2 0 0](https://cloud.githubusercontent.com/assets/356674/17137863/b977bf00-533d-11e6-9070-426c5131f75a.png)
 
 ###Installation
  * Download the dist/youtube.zip archive
@@ -57,7 +61,7 @@ tinymce.init({
 <pre>
 This file is part of tinyMCE.
 YouTube for tinyMCE
-Copyright (C) 2011 - 2015  Gerits Aurelien aurelien[at]magix-dev[dot]be - contact[at]aurelien-gerits[dot]be
+Copyright (C) 2011 - 2017  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
 
 Redistributions of files must retain the above copyright notice.
 This program is free software: you can redistribute it and/or modify
