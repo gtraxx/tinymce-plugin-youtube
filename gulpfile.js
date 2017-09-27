@@ -19,7 +19,7 @@ gulp.task("clean", function () {
  */
 gulp.task("js", function () {
     return gulp
-        .src(["js/vendor/**/*", "!js/vendor/jquery.js", "js/*"])
+        .src(["js/vendor/**/*", "!js/vendor/jquery.js", "js/src/*"])
         .pipe(concat("main.js"))
         .pipe(uglify({preserveComments: "some"}))
         .pipe(gulp.dest("tmp/js/"));
