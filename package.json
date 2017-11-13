@@ -1,6 +1,6 @@
 {
   "name": "tinymce-plugin-youtube",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Plugin youtube for TinyMCE 4",
   "main": "youtube.html",
   "scripts": {
@@ -27,11 +27,12 @@
   "devDependencies": {
     "gulp": "^3.6.2",
     "gulp-clean": "^0.2.4",
-    "gulp-uglify": "^0.2.1",
-    "gulp-zip": "^0.3.4",
+    "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.2.0",
+    "gulp-minify-css": "^0.3.4",
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.3.0",
-    "gulp-minify-css": "^0.3.4"
+    "gulp-uglify": "^0.2.1",
+    "gulp-zip": "^0.3.4"
   }
 }
