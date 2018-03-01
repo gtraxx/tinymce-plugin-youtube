@@ -3,7 +3,7 @@ Plugin youtube for TinyMCE 4
 
 Insert YouTube video (Google Format) with optionnals (HD, similar vidéos)
 
-###version 
+### version 
 
 [![release](https://img.shields.io/github/release/gtraxx/tinymce-plugin-youtube.svg)](https://github.com/gtraxx/tinymce-plugin-youtube/releases/latest)
 
@@ -15,15 +15,15 @@ Authors
 
 Official link in french :
 
-###Screenshot
+### Screenshot
 
 ![youtube-tinymce-2 0 0](https://cloud.githubusercontent.com/assets/356674/17137863/b977bf00-533d-11e6-9070-426c5131f75a.png)
 
-###Installation
+### Installation
  * Download the dist/youtube.zip archive
  * Unzip archive in tinyMCE plugin directory (tiny_mce/plugins/)
 
-###Configuration
+### Configuration
  ```html
 <script type="text/javascript">
 tinymce.init({
@@ -39,7 +39,7 @@ tinymce.init({
 </script>
 ```
 
-###Languages
+### Languages
  * English
  * French
  * Russian
@@ -51,6 +51,7 @@ tinymce.init({
  * Polish
  * Dutch
  * Turkish
+ * Japanese
  
  You can send me translations in other languages
  
