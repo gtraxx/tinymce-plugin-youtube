@@ -11,7 +11,7 @@ Insert YouTube video (Google Format) with optionnals (HD, similar vidéos)
 Authors
 -------
 
- * Gerits Aurelien (Author-Developer) contact[at]aurelien-gerits[point]be
+ * Gerits Aurelien (Author-Developer) aurelien[at]magix-cms[point]com
 
 Official link in french :
 
@@ -52,6 +52,7 @@ tinymce.init({
  * Dutch
  * Turkish
  * Japanese
+ * Lithuanian
  
  You can send me translations in other languages
  
@@ -62,7 +63,7 @@ tinymce.init({
 <pre>
 This file is part of tinyMCE.
 YouTube for tinyMCE
-Copyright (C) 2011 - 2017  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
+Copyright (C) 2011 - 2018  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
 
 Redistributions of files must retain the above copyright notice.
 This program is free software: you can redistribute it and/or modify
