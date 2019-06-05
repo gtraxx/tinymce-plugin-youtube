@@ -3,7 +3,7 @@ var gulp = require("gulp"),
     concat = require("gulp-concat"),
     rename = require("gulp-rename"),
     replace = require("gulp-replace"),
-    uglify = require("gulp-uglify"),
+    terser = require("gulp-terser"),
     minifyCss = require("gulp-minify-css"),
     zip = require("gulp-zip");
 
@@ -21,7 +21,7 @@ gulp.task("js", function () {
     return gulp
         .src(["js/vendor/**/*", "!js/vendor/jquery.js", "js/src/*"])
         .pipe(concat("main.js"))
-        .pipe(uglify({preserveComments: "some"}))
+        .pipe(terser())
         .pipe(gulp.dest("tmp/js/"));
 });
 
@@ -31,7 +31,7 @@ gulp.task("js", function () {
 gulp.task("plugin", function () {
     return gulp
         .src("plugin.js")
-        .pipe(uglify({preserveComments: "some"}))
+        .pipe(terser())
         .pipe(rename("plugin.min.js"))
         .pipe(gulp.dest("tmp/"));
 });

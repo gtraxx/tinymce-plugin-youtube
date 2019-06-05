@@ -3,7 +3,7 @@
  #
  # This file is part of tinyMCE.
  # YouTube for tinyMCE
- # Copyright (C) 2011 - 2017  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
+ # Copyright (C) 2011 - 2019  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
  # This program is free software: you can redistribute it and/or modify
  # it under the terms of the GNU General Public License as published by
  # the Free Software Foundation, either version 3 of the License, or
@@ -19,33 +19,56 @@
  #
  # -- END LICENSE BLOCK -----------------------------------
  */
-(function (tiny) {
-    tiny.PluginManager.requireLangPack("youtube");
-    tiny.PluginManager.add("youtube", function (editor, url) {
-        function showDialog() {
-            editor.windowManager.open({
-                title: tinymce.util.I18n.translate("YouTube Title"),
-                file: url + "/youtube.html",
-                width: 800,
-                height: 550,
-                inline: 1,
-                resizable: true,
-                maximizable: true
-            });
-        }
+(function () {
+    var youtube = (function () {
+        'use strict';
+        tinymce.PluginManager.requireLangPack("youtube");
+        tinymce.PluginManager.add("youtube", function (editor, url) {
 
-        // Add a button that opens a window
-        editor.addButton("youtube", {
-            icon: true,
-            image: url + "/img/youtube.gif",
-            tooltip:  tinymce.util.I18n.translate("YouTube Tooltip"),
-            onclick: showDialog,
-            onPostRender: function () {
-                var self = this;
-                editor.on("NodeChange", function (e) {
-                    self.active(e.element.nodeName === "IMG");
-                });
+            /*
+            Add a custom icon to TinyMCE
+             */
+            editor.ui.registry.addIcon('youtube-brands', '<svg width="24" height="24"><use xlink:href="'+url+'/img/youtube.svg#youtube-brands"></use></svg>');
+            /*
+            Use to store the instance of the Dialog
+             */
+            var _dialog = false;
+
+            /*
+            An array of options to appear in the "Type" select box.
+             */
+            var _typeOptions = [];
+            /*
+            Used to store a reference to the dialog when we have opened it
+             */
+            var _api = false;
+
+
+            var _urlDialogConfig = {
+                title: 'My html dialog',
+                url: url + "/youtube.html",
+                width: 800,
+                height: 620
+            };
+            // Define the Toolbar button
+            editor.ui.registry.addButton('youtube', {
+                icon: 'youtube-brands',
+                tooltip: "YouTube Tooltip",
+                title:"YouTube Tooltip",
+                onAction: () => {
+                _api = editor.windowManager.openUrl(_urlDialogConfig)
             }
         });
-    });
-}(tinymce));
+            // Return details to be displayed in TinyMCE's "Help" plugin, if you use it
+            // This is optional.
+            return {
+                getMetadata: function () {
+                    return {
+                        name: "YouTube Plugin",
+                        url: "https://github.com/gtraxx/tinymce-plugin-youtube"
+                    };
+                }
+            };
+        });
+    }());
+})();
