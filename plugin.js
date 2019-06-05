@@ -45,7 +45,7 @@
 
 
             var _urlDialogConfig = {
-                title: 'My html dialog',
+                title: 'YouTube Title',
                 url: url + "/youtube.html",
                 width: 800,
                 height: 620
