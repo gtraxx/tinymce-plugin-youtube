@@ -52,13 +52,23 @@
             };
             // Define the Toolbar button
             editor.ui.registry.addButton('youtube', {
+                    icon: 'youtube-brands',
+                    tooltip: "YouTube Tooltip",
+                    title:"YouTube Tooltip",
+                    onAction: () => {
+                    _api = editor.windowManager.openUrl(_urlDialogConfig)
+                }
+            });
+            // Add a button into the menu bar
+            editor.ui.registry.addMenuItem('youtube', {
                 icon: 'youtube-brands',
+                text: "YouTube Tooltip",
                 tooltip: "YouTube Tooltip",
                 title:"YouTube Tooltip",
                 onAction: () => {
-                _api = editor.windowManager.openUrl(_urlDialogConfig)
-            }
-        });
+                    _api = editor.windowManager.openUrl(_urlDialogConfig)
+                }
+            });
             // Return details to be displayed in TinyMCE's "Help" plugin, if you use it
             // This is optional.
             return {

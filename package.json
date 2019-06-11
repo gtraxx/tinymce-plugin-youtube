@@ -36,6 +36,7 @@
     "gulp-zip": "^0.3.4"
   },
   "dependencies": {
-    "graceful-fs": "^4.1.15"
+    "graceful-fs": "^4.1.15",
+    "gulp-terser-js": "^4.0.2"
   }
 }
