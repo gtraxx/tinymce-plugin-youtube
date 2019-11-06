@@ -1,7 +1,7 @@
 {
   "name": "tinymce-plugin-youtube",
-  "version": "2.1.0",
-  "description": "Plugin youtube for TinyMCE 4",
+  "version": "3.0.0",
+  "description": "Plugin youtube for TinyMCE 5",
   "main": "youtube.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
