@@ -3,7 +3,7 @@ var gulp = require("gulp"),
     concat = require("gulp-concat"),
     rename = require("gulp-rename"),
     replace = require("gulp-replace"),
-    uglify = require("gulp-uglify"),
+    terser = require("gulp-terser-js"),
     minifyCss = require("gulp-minify-css"),
     zip = require("gulp-zip");
 
@@ -19,9 +19,9 @@ gulp.task("clean", function () {
  */
 gulp.task("js", function () {
     return gulp
-        .src(["js/vendor/**/*", "!js/vendor/jquery.js", "js/src/*"])
+        .src(["js/vendor/**/*", "!js/vendor/jquery.min.js", "js/src/*"])
         .pipe(concat("main.js"))
-        .pipe(uglify({preserveComments: "some"}))
+        .pipe(terser())
         .pipe(gulp.dest("tmp/js/"));
 });
 
@@ -31,7 +31,7 @@ gulp.task("js", function () {
 gulp.task("plugin", function () {
     return gulp
         .src("plugin.js")
-        .pipe(uglify({preserveComments: "some"}))
+        .pipe(terser())
         .pipe(rename("plugin.min.js"))
         .pipe(gulp.dest("tmp/"));
 });
@@ -84,7 +84,7 @@ gulp.task("dist", ["clean", "html", "css", "js", "plugin"], function () {
             "langs/**/*",
             "js/main.js",
             "tmp/**/*",
-            "js/vendor/jquery.js",
+            "js/vendor/jquery.min.js",
             "LICENCE",
             "plugin.js",
             "README.md"

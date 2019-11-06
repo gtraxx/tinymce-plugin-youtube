@@ -32,10 +32,11 @@
     "gulp-minify-css": "^0.3.4",
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.3.0",
-    "gulp-uglify": "^0.2.1",
+    "gulp-terser": "^1.2.0",
     "gulp-zip": "^0.3.4"
   },
   "dependencies": {
-    "graceful-fs": "^4.1.15"
+    "graceful-fs": "^4.1.15",
+    "gulp-terser-js": "^4.0.2"
   }
 }

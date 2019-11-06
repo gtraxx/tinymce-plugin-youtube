@@ -1,4 +1,4 @@
-Plugin youtube for TinyMCE 4
+Plugin youtube for TinyMCE 5
 ======================
 
 Insert YouTube video (Google Format) with optionnals (HD, similar vidéos)
