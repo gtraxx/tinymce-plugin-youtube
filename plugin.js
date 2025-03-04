@@ -19,66 +19,39 @@
  #
  # -- END LICENSE BLOCK -----------------------------------
  */
-(function () {
-    var youtube = (function () {
-        'use strict';
-        tinymce.PluginManager.requireLangPack("youtube");
-        tinymce.PluginManager.add("youtube", function (editor, url) {
 
-            /*
-            Add a custom icon to TinyMCE
-             */
-            editor.ui.registry.addIcon('youtube-brands', '<svg width="24" height="24"><use xlink:href="'+url+'/img/youtube.svg#youtube-brands"></use></svg>');
-            /*
-            Use to store the instance of the Dialog
-             */
-            var _dialog = false;
+tinymce.PluginManager.requireLangPack("youtube");
+tinymce.PluginManager.add("youtube", function (editor, url) {
+    /* Add a custom icon to TinyMCE */
+    editor.ui.registry.addIcon('youtube-brands', '<svg width="24" height="24"><use xlink:href="'+url+'/img/youtube.svg#youtube-brands"></use></svg>');
 
-            /*
-            An array of options to appear in the "Type" select box.
-             */
-            var _typeOptions = [];
-            /*
-            Used to store a reference to the dialog when we have opened it
-             */
-            var _api = false;
+    let _dialog = false; // Use to store the instance of the Dialog
+    let _typeOptions = []; //An array of options to appear in the "Type" select box.
+    let _api = false; // Used to store a reference to the dialog when we have opened it
 
-
-            var _urlDialogConfig = {
-                title: 'YouTube Title',
-                url: url + "/youtube.html",
-                width: 800,
-                height: 620
-            };
-            // Define the Toolbar button
-            editor.ui.registry.addButton('youtube', {
-                    icon: 'youtube-brands',
-                    tooltip: "YouTube Tooltip",
-                    title:"YouTube Tooltip",
-                    onAction: () => {
-                    _api = editor.windowManager.openUrl(_urlDialogConfig)
-                }
-            });
-            // Add a button into the menu bar
-            editor.ui.registry.addMenuItem('youtube', {
-                icon: 'youtube-brands',
-                text: "YouTube Tooltip",
-                tooltip: "YouTube Tooltip",
-                title:"YouTube Tooltip",
-                onAction: () => {
-                    _api = editor.windowManager.openUrl(_urlDialogConfig)
-                }
-            });
-            // Return details to be displayed in TinyMCE's "Help" plugin, if you use it
-            // This is optional.
-            return {
-                getMetadata: function () {
-                    return {
-                        name: "YouTube Plugin",
-                        url: "https://github.com/gtraxx/tinymce-plugin-youtube"
-                    };
-                }
-            };
-        });
-    }());
-})();
+    let _urlDialogConfig = {
+        title: 'YouTube Title',
+        url: url + "/youtube.html",
+        width: 800,
+        height: 620
+    };
+    // Define the Toolbar button
+    editor.ui.registry.addButton('youtube', {
+            icon: 'youtube-brands',
+            tooltip: "YouTube Tooltip",
+            title:"YouTube Tooltip",
+            onAction: () => {
+            _api = editor.windowManager.openUrl(_urlDialogConfig)
+        }
+    });
+    // Add a button into the menu bar
+    editor.ui.registry.addMenuItem('youtube', {
+        icon: 'youtube-brands',
+        text: "YouTube Tooltip",
+        tooltip: "YouTube Tooltip",
+        title:"YouTube Tooltip",
+        onAction: () => {
+            _api = editor.windowManager.openUrl(_urlDialogConfig)
+        }
+    });
+});
