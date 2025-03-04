@@ -5,7 +5,7 @@ Insert YouTube video (Google Format) with optionnals (HD, similar vidéos)
 
 YouTube plugin compatible with **tinymce 4** is available [here](https://github.com/gtraxx/tinymce-plugin-youtube/tree/tinymce4)
 
-### version 
+### version
 
 [![release](https://img.shields.io/github/release/gtraxx/tinymce-plugin-youtube.svg)](https://github.com/gtraxx/tinymce-plugin-youtube/releases/latest)
 
@@ -13,7 +13,7 @@ YouTube plugin compatible with **tinymce 4** is available [here](https://github.
 Authors
 -------
 
- * Gerits Aurelien (Author-Developer) aurelien[at]magix-cms[point]com
+* Gerits Aurelien (Author-Developer) aurelien[at]magix-cms[point]com
 
 Official link in french :
 
@@ -22,42 +22,42 @@ Official link in french :
 ![youtube-tinymce-2 0 0](https://cloud.githubusercontent.com/assets/356674/17137863/b977bf00-533d-11e6-9070-426c5131f75a.png)
 
 ### Installation
- * Download the dist/youtube.zip archive
- * Unzip archive in tinyMCE plugin directory (tiny_mce/plugins/)
+* Download the dist/youtube.zip archive
+* Unzip archive in tinyMCE plugin directory (tiny_mce/plugins/)
 
 ### Configuration
  ```html
 <script type="text/javascript">
-tinymce.init({
-	selector: "textarea",
-	plugins: [
-			"advlist autolink lists link image charmap print preview anchor",
-			"searchreplace visualblocks code fullscreen",
-			"insertdatetime media table contextmenu paste youtube"
-			],
-	toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image| youtube",
-	extended_valid_elements: "+iframe[src|width|height|name|align|class]",
-	});
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste youtube"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image| youtube",
+        extended_valid_elements: "+iframe[src|width|height|name|align|class]",
+    });
 </script>
 ```
 
 ### Languages
- * English
- * French
- * Russian
- * Spanish
- * German
- * Italian
- * Brazilian
- * Hungarian
- * Polish
- * Dutch
- * Turkish
- * Japanese
- * Lithuanian
- 
- You can send me translations in other languages
- 
+* English
+* French
+* Russian
+* Spanish
+* German
+* Italian
+* Brazilian
+* Hungarian
+* Polish
+* Dutch
+* Turkish
+* Japanese
+* Lithuanian
+
+You can send me translations in other languages
+
 ### Old Version
 
 [Plugin YouTube for tinyMCE 3](http://magix-cjquery.com/post/2012/05/11/plugin-youtube-v1.4-pour-tinyMCE)
@@ -65,7 +65,7 @@ tinymce.init({
 <pre>
 This file is part of tinyMCE.
 YouTube for tinyMCE
-Copyright (C) 2011 - 2019  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
+Copyright (C) 2011 - 2025  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
 
 Redistributions of files must retain the above copyright notice.
 This program is free software: you can redistribute it and/or modify
