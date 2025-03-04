@@ -19,7 +19,7 @@ Official link in french :
 
 ### Screenshot
 
-![youtube-tinymce-2 0 0](https://cloud.githubusercontent.com/assets/356674/17137863/b977bf00-533d-11e6-9070-426c5131f75a.png)
+<img width="819" alt="Image" src="https://github.com/user-attachments/assets/d4865527-2eb9-4b3d-8262-7f9ff2dc0612" />
 
 ### Installation
 * Download the dist/youtube.zip archive
