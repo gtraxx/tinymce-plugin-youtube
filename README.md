@@ -9,7 +9,7 @@ YouTube plugin compatible with **tinymce 4** is available [here](https://github.
 
 [![release](https://img.shields.io/github/release/gtraxx/tinymce-plugin-youtube.svg)](https://github.com/gtraxx/tinymce-plugin-youtube/releases/latest)
 ![Version TinyMCE](https://img.shields.io/badge/TinyMCE-5%20%7C%206%20%7C%207-blue)
-![Licence](https://img.shields.io/badge/licence-MIT-green)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 ![Statut](https://img.shields.io/badge/projet-Open%20Source-orange)
 
 ## Soutenir le projet
