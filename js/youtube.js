@@ -97,23 +97,24 @@ window.addEventListener('load',() => {
     let timer;
     let preview;
     let urlInput;
+    let editor = parent.tinymce.activeEditor;
     let langVariables = {
-        section_video: parent.tinymce.util.I18n.translate("section_video"),
-        aspect_video: parent.tinymce.util.I18n.translate("aspect_video"),
-        option_video: parent.tinymce.util.I18n.translate("option_video"),
-        preview_video: parent.tinymce.util.I18n.translate("preview_video"),
-        youtubeUrl: parent.tinymce.util.I18n.translate("Youtube URL"),
-        youtubeID: parent.tinymce.util.I18n.translate("Youtube ID"),
-        youtubeWidth: parent.tinymce.util.I18n.translate("width"),
-        youtubeHeight: parent.tinymce.util.I18n.translate("height"),
-        youtubeRatio: parent.tinymce.util.I18n.translate("ratio"),
-        ratio16by9: parent.tinymce.util.I18n.translate("ratio16by9"),
-        ratio4by3: parent.tinymce.util.I18n.translate("ratio4by3"),
-        youtubeAutoplay: parent.tinymce.util.I18n.translate("autoplay"),
-        youtubeHD: parent.tinymce.util.I18n.translate("HD video"),
-        youtubeREL: parent.tinymce.util.I18n.translate("Related video"),
-        cancel: parent.tinymce.util.I18n.translate("cancel"),
-        Insert: parent.tinymce.util.I18n.translate("Insert")
+        section_video: editor.translate("section_video"),
+        aspect_video: editor.translate("aspect_video"),
+        option_video: editor.translate("option_video"),
+        preview_video: editor.translate("preview_video"),
+        youtubeUrl: editor.translate("Youtube URL"),
+        youtubeID: editor.translate("Youtube ID"),
+        youtubeWidth: editor.translate("width"),
+        youtubeHeight: editor.translate("height"),
+        youtubeRatio: editor.translate("ratio"),
+        ratio16by9: editor.translate("ratio16by9"),
+        ratio4by3: editor.translate("ratio4by3"),
+        youtubeAutoplay: editor.translate("autoplay"),
+        youtubeHD: editor.translate("HD video"),
+        youtubeREL: editor.translate("Related video"),
+        cancel: editor.translate("cancel"),
+        Insert: editor.translate("Insert")
     };
 
     /**

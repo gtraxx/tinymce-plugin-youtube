@@ -12,6 +12,12 @@ YouTube plugin compatible with **tinymce 4** is available [here](https://github.
 ![Licence](https://img.shields.io/badge/licence-MIT-green)
 ![Statut](https://img.shields.io/badge/projet-Open%20Source-orange)
 
+## Soutenir le projet
+
+Si vous souhaitez soutenir le développement, vous pouvez faire un don via PayPal :
+
+[![Faire un don](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/donate/?business=BQBYN3XYGMDML&no_recurring=0&currency_code=EUR)
+
 Authors
 -------
 

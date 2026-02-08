@@ -3,7 +3,7 @@
  #
  # This file is part of tinyMCE.
  # YouTube for tinyMCE
- # Copyright (C) 2011 - 2019  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
+ # Copyright (C) 2011 - 2026  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
  # This program is free software: you can redistribute it and/or modify
  # it under the terms of the GNU General Public License as published by
  # the Free Software Foundation, either version 3 of the License, or
@@ -19,39 +19,45 @@
  #
  # -- END LICENSE BLOCK -----------------------------------
  */
-
+/**
+ * YouTube for tinyMCE - Magix CMS
+ * Version 5.0
+ */
 tinymce.PluginManager.requireLangPack("youtube");
 tinymce.PluginManager.add("youtube", function (editor, url) {
-    /* Add a custom icon to TinyMCE */
-    editor.ui.registry.addIcon('youtube-brands', '<svg width="24" height="24"><use xlink:href="'+url+'/img/youtube.svg#youtube-brands"></use></svg>');
 
-    let _dialog = false; // Use to store the instance of the Dialog
-    let _typeOptions = []; //An array of options to appear in the "Type" select box.
-    let _api = false; // Used to store a reference to the dialog when we have opened it
+    const _ = (text) => editor.translate(text);
 
-    let _urlDialogConfig = {
-        title: 'YouTube Title',
-        url: url + "/youtube.html",
-        width: 800,
-        height: 620
+    /* Icône YouTube (SVG intégré pour éviter les problèmes de chargement externe) */
+    editor.ui.registry.addIcon('youtube-brands', '<svg width="24" height="24" viewBox="0 0 24 24"><path fill="#FF0000" d="M23.5 6.2c-.3-1.1-1.1-1.9-2.2-2.2C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.3.5c-1.1.3-1.9 1.1-2.2 2.2C0 8.2 0 12 0 12s0 3.8.5 5.8c.3 1.1 1.1 1.9 2.2 2.2 2 1.5 9.3 1.5 9.3 1.5s7.3 0 9.3-.5c1.1-.3 1.9-1.1 2.2-2.2.5-2 .5-5.8.5-5.8s0-3.8-.5-5.8zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg>');
+
+    const openYouTubeDialog = () => {
+        editor.windowManager.openUrl({
+            title: _('YouTube Title'), // Utilise votre clé existante
+            url: url + "/youtube.html",
+            width: 800,
+            height: 620
+        });
     };
-    // Define the Toolbar button
+
     editor.ui.registry.addButton('youtube', {
-            icon: 'youtube-brands',
-            tooltip: "YouTube Tooltip",
-            title:"YouTube Tooltip",
-            onAction: () => {
-            _api = editor.windowManager.openUrl(_urlDialogConfig)
-        }
+        icon: 'youtube-brands',
+        tooltip: _('YouTube Tooltip'), // Utilise votre clé existante
+        onAction: openYouTubeDialog
     });
-    // Add a button into the menu bar
+
+    // Entrée de menu
     editor.ui.registry.addMenuItem('youtube', {
         icon: 'youtube-brands',
-        text: "YouTube Tooltip",
-        tooltip: "YouTube Tooltip",
-        title:"YouTube Tooltip",
-        onAction: () => {
-            _api = editor.windowManager.openUrl(_urlDialogConfig)
-        }
+        text: _('YouTube Video'), // Traduit via fr_FR.js
+        onAction: openYouTubeDialog
     });
+
+    return {
+        getMetadata: () => ({
+            name: "YouTube for Magix CMS",
+            author: "Gerits Aurelien",
+            version: "2.0.0"
+        })
+    };
 });
