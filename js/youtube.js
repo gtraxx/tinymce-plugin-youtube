@@ -2,8 +2,8 @@
  # -- BEGIN LICENSE BLOCK ----------------------------------
  #
  # This file is part of tinyMCE.
- # YouTube for tinyMCE 4.x.x
- # Copyright (C) 2011 - 2017  Gerits Aurelien <aurelien[at]magix-cms[dot]com>
+ # YouTube for tinyMCE 7.x (Magix CMS 4)
+ # Copyright (C) 2008 - 2026  Gerits Aurelien (Magix CMS).
  # This program is free software: you can redistribute it and/or modify
  # it under the terms of the GNU General Public License as published by
  # the Free Software Foundation, either version 3 of the License, or
@@ -59,7 +59,8 @@ class Youtube {
     }
 
     createIframe(width = 750, height = 315) {
-        return '<iframe src="' + this.url + '" ' + 'width="' + width + '" height="' + height + '"' + ' frameborder="0" allowfullscreen class="embed-responsive-item">&nbsp;</iframe>';
+        // Suppression des anciennes classes Bootstrap 3/4 pour l'aperçu du dialogue
+        return '<iframe src="' + this.url + '" width="' + width + '" height="' + height + '" frameborder="0" allowfullscreen>&nbsp;</iframe>';
     }
 
     compiledHTML() {
@@ -68,28 +69,43 @@ class Youtube {
             height: this.height,
             width: this.width,
             playerVars: {
-                'autoplay': this.autoplay? 1 : 0,
-                'rel': this.related? 1 : 0,
-                'fs': this.fullscreen? 1 : 0,
-                'hd': this.hd? 1 : 0
+                'autoplay': this.autoplay ? 1 : 0,
+                'rel': this.related ? 1 : 0,
+                'fs': this.fullscreen ? 1 : 0,
+                'hd': this.hd ? 1 : 0
             }
         };
-        let html = '<div class="embed-responsive embed-responsive-'+this.ratio+'">';
+
+        let cssRatio = this.ratio.replace('by', ' / ').replace('x', ' / ');
+
+        // UTILISATION DES CLASSES PURES (Plus de style="")
+        let html = '<div class="magix-ytb-container mb-3" data-ratio="'+cssRatio+'">';
         html += '<picture class="ytb-video-preview" data-ytb=\''+JSON.stringify(params)+'\'>';
-        html += '<source type="image/webp" size="(min-width: 640px) 1280px" srcset="'+this.placeholder.webp+'maxresdefault.webp 1280w">';
-        html += '<source type="image/webp" size="(min-width: 480px) 640px" srcset="'+this.placeholder.webp+'hqdefault.webp 640w">';
-        html += '<source type="image/webp" size="(min-width: 320px) 480px" srcset="'+this.placeholder.webp+'mqdefault.webp 480w">';
-        html += '<source type="image/webp" size="(min-width: 120px) 320px" srcset="'+this.placeholder.webp+'sddefault.webp 320w">';
-        html += '<source type="image/webp" size="120px" srcset="'+this.placeholder.webp+'default.webp 120w">';
-        html += '<source type="image/jpeg" size="(min-width: 640px) 1280px" srcset="'+this.placeholder.jpeg+'maxresdefault.jpg 1280w">';
-        html += '<source type="image/jpeg" size="(min-width: 480px) 640px" srcset="'+this.placeholder.jpeg+'hqdefault.jpg 640w">';
-        html += '<source type="image/jpeg" size="(min-width: 320px) 480px" srcset="'+this.placeholder.jpeg+'mqdefault.jpg 480w">';
-        html += '<source type="image/jpeg" size="(min-width: 120px) 320px" srcset="'+this.placeholder.jpeg+'sddefault.jpg 320w">';
-        html += '<source type="image/jpeg" size="120px" srcset="'+this.placeholder.jpeg+'default.jpg 120w">';
-        html += '<img src="'+this.placeholder.jpeg+'default.jpg" srcset="'+this.placeholder.jpeg+'maxresdefault.webp 1280w, '+this.placeholder.jpeg+'maxresdefault.webp 640w, '+this.placeholder.jpeg+'maxresdefault.webp 480w, '+this.placeholder.jpeg+'maxresdefault.webp 320w, '+this.placeholder.jpeg+'maxresdefault.webp 120w" size="(min-width: 640px) 1280px, (min-width: 480px) 640px, (min-width: 320px) 480px, (min-width: 120px) 320px, 120px" alt="Accept embed video cookie to display the video" loading="lazy" class="embed-responsive-item img-responsive lazyload" data-ytb=\''+JSON.stringify(params)+'\' />';
+
+        // 1. UNE SEULE source WebP intelligente (Resolution Switching pur)
+        html += '<source type="image/webp" sizes="100vw" srcset="'
+            + this.placeholder.webp + 'maxresdefault.webp 1280w, '
+            + this.placeholder.webp + 'hqdefault.webp 640w, '
+            + this.placeholder.webp + 'mqdefault.webp 480w, '
+            + this.placeholder.webp + 'sddefault.webp 320w">';
+
+        // 2. La balise img fallback intelligente (JPEG)
+        // Note: L'attribut srcset de l'img utilise aussi le JPEG, pas le WebP (erreur corrigée de l'ancien script)
+        html += '<img src="'+this.placeholder.jpeg+'hqdefault.jpg" '
+            + 'sizes="100vw" '
+            + 'srcset="'
+            + this.placeholder.jpeg + 'maxresdefault.jpg 1280w, '
+            + this.placeholder.jpeg + 'hqdefault.jpg 640w, '
+            + this.placeholder.jpeg + 'mqdefault.jpg 480w, '
+            + this.placeholder.jpeg + 'sddefault.jpg 320w" '
+            + 'alt="Vidéo YouTube" '
+            + 'loading="lazy" '
+            + 'class="img-fluid magix-ytb-cover lazyload">';
+
         html += '</picture>';
-        html += '</div><p></p>'
-        return html; 
+        html += '</div><p><br></p>';
+
+        return html;
     }
 }
 
